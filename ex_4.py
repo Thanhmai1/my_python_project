@@ -1,4 +1,10 @@
 def get_user_input():
+    """_Get user input_
+
+    Returns:
+        _num1_: _element in array 1_
+        _num2_: _element in array 2_
+    """
     num_1 = input("Enter a number for array 1 (Enter 'exit' to break): ")
     num_2 = input("Enter a number for array 2 (Enter 'exit' to break): ")
     return num_1, num_2
@@ -49,14 +55,8 @@ def main():
         arr_3 = arr_1 + arr_2
     if arr_1 and arr_2:
         same_number_array = same_numbers(arr_1, arr_2)
-        diff_number_array = different_numbers(arr_1, arr_2)
-        # max_num_arr_1, min_num_arr_1 = max_min(arr_1)
-        # max_num_arr_2, min_num_arr_2 = max_min(arr_2)
-        max_num, min_num = max_min(arr_3)        
-        # print(f"Max number in array 1: {max_num_arr_1}")
-        # print(f"Min number in array 1: {min_num_arr_1}")
-        # print(f"Max number in array 2: {max_num_arr_2}")
-        # print(f"Min number in array 2: {min_num_arr_2}")
+        diff_number_array = different_numbers(arr_1, arr_2)        
+        max_num, min_num = max_min(arr_3)                
         print(f"Max: {max_num}")
         print(f"Min: {min_num}")
         print(f"Same numbers: {same_number_array}")
