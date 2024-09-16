@@ -4,7 +4,7 @@ def get_user_input():
     return num_1, num_2
 
 
-def update_max_min(arr):
+def max_min(arr):
     max_num = arr[0]
     min_num = arr[0]
 
@@ -46,17 +46,19 @@ def main():
             arr_2.append(int(num_2))
         except ValueError:
             print("Please enter valid numbers.")
-
+        arr_3 = arr_1 + arr_2
     if arr_1 and arr_2:
         same_number_array = same_numbers(arr_1, arr_2)
         diff_number_array = different_numbers(arr_1, arr_2)
-        max_num_arr_1, min_num_arr_1 = update_max_min(arr_1)
-        max_num_arr_2, min_num_arr_2 = update_max_min(arr_2)
-
-        print(f"Max number in array 1: {max_num_arr_1}")
-        print(f"Min number in array 1: {min_num_arr_1}")
-        print(f"Max number in array 2: {max_num_arr_2}")
-        print(f"Min number in array 2: {min_num_arr_2}")
+        # max_num_arr_1, min_num_arr_1 = max_min(arr_1)
+        # max_num_arr_2, min_num_arr_2 = max_min(arr_2)
+        max_num, min_num = max_min(arr_3)        
+        # print(f"Max number in array 1: {max_num_arr_1}")
+        # print(f"Min number in array 1: {min_num_arr_1}")
+        # print(f"Max number in array 2: {max_num_arr_2}")
+        # print(f"Min number in array 2: {min_num_arr_2}")
+        print(f"Max: {max_num}")
+        print(f"Min: {min_num}")
         print(f"Same numbers: {same_number_array}")
         print(f"Different numbers: {diff_number_array}")
     else:
