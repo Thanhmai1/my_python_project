@@ -1,5 +1,4 @@
 import ex_practise
-print("")
 while True:
         print('_________________________')
         x = float(input("Enter height: "))
