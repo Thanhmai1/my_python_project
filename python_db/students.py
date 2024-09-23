@@ -27,7 +27,27 @@ def get_all_students():
         print(students)
         
 def main():
-    print("----Menu----")
-    print('1. Insert students')
-    print("2. Display all students")
-    print("Enter your choice")
+    while True:
+        print("----Menu----")
+        print('1. Insert students')
+        print("2. Display all students")
+        print("3. Exit")
+        print("Enter your choice: ")
+        choice = int(input())
+        
+        if choice == 1:
+            name = input('Enter your name: ')
+            age = int(input('Enter your age: '))
+            grade = int(input("Enter your grade: "))
+
+            insert_student(name, age, grade)
+            
+        elif choice == 2:
+            get_all_students()
+
+        elif choice == 3:
+            print("Exitting...")
+            break
+        
+if __name__ == "__main__":
+    main()
