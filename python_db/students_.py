@@ -38,7 +38,7 @@ def add_students_subject(student_id, subject_id):
     print(cursor.rowcount, ' was inserted')
     
 def get_all_students():
-    sql = "SELECT students.name, ratings.rating, students_subject.student_id, sub.id AS subject_id, sub.name_subject FROM students INNER JOIN ratings ON students.grade = ratings.grade INNER JOIN students_subject ON students.id = students_subject.student_id INNER JOIN subjects sub ON students_subject.subject_id = sub.id;"
+    sql = "SELECT students.name, rating.rating, students_subject.student_id, sub.id AS subject_id, sub.name_subject FROM students INNER JOIN rating ON students.grade BETWEEN rating.min_values AND rating.max_values INNER JOIN students_subject ON students.id = students_subject.student_id INNER JOIN subjects sub ON students_subject.subject_id = sub.id;"
     cursor.execute(sql)
     students = cursor.fetchall()
 
@@ -47,7 +47,7 @@ def get_all_students():
     
         
 def get_students_by_point(grade):
-    sql = "SELECT students.name, students.grade, ratings.rating FROM students INNER JOIN ratings ON students.grade = ratings.grade WHERE students.grade = '%s'"    
+    sql = "SELECT students.name, students.grade, rating.rating FROM students INNER JOIN rating ON students.grade BETWEEN rating.min_values AND rating.max_values WHERE students.grade = '%s'"    
     values = (grade)
     cursor.execute(sql, (values, ))
     students = cursor.fetchall()
@@ -57,7 +57,7 @@ def get_students_by_point(grade):
     
     
 def get_random_students():
-    sql = "SELECT students.name, ratings.rating, students_subject.student_id, sub.id AS subject_id, sub.name_subject FROM students INNER JOIN ratings ON students.grade = ratings.grade INNER JOIN students_subject ON students.id = students_subject.student_id INNER JOIN subjects sub ON students_subject.subject_id = sub.id ORDER BY RAND() LIMIT 1"    
+    sql = "SELECT students.name, rating.rating, students_subject.student_id, sub.id AS subject_id, sub.name_subject FROM students INNER JOIN rating ON students.grade WHERE rating.min_values AND rating.max_values INNER JOIN students_subject ON students.id = students_subject.student_id INNER JOIN subjects sub ON students_subject.subject_id = sub.id ORDER BY RAND() LIMIT 1"    
     cursor.execute(sql)
     students = cursor.fetchone()      
     if students:
